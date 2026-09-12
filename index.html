@@ -6,7 +6,7 @@
     <title>V-ICAL Bench - Video In-Context Learning Benchmark</title>
     <link rel="preload" href="assets/fonts/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="assets/fonts/source-sans-3.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="styles-clean.css?v=20260912-taxi-arrow">
+    <link rel="stylesheet" href="styles-clean.css?v=20260912-playback-result">
 </head>
 <body>
     <!-- Navigation -->
@@ -127,9 +127,9 @@
                 <div class="case-guide-target">
                     <span id="taxiGuideText">Watch the model play Taxi</span>
                     <svg class="case-guide-arrow" viewBox="0 0 140 64" aria-hidden="true">
-                        <path class="case-guide-arrow-rail" d="M18 8 C47 9 35 36 70 49"></path>
-                        <path class="case-guide-arrow-flow" d="M18 8 C47 9 35 36 70 49"></path>
-                        <path class="case-guide-arrow-head" d="M58 40 L70 52 L82 40"></path>
+                        <path class="case-guide-arrow-rail" d="M18 8 C45 8 36 28 56 35 C67 40 70 45 70 53"></path>
+                        <path class="case-guide-arrow-flow" d="M18 8 C45 8 36 28 56 35 C67 40 70 45 70 53"></path>
+                        <path class="case-guide-arrow-head" d="M59 42 L70 53 L81 42"></path>
                     </svg>
                 </div>
             </div>
@@ -172,6 +172,13 @@
 
                         <div class="player-screen-compact">
                             <img id="playerFrame" src="assets/cases/taxi/frame_000.png" alt="Game frame">
+                            <div class="player-result-overlay" id="resultOverlay" hidden aria-live="polite">
+                                <span class="result-complete">Run complete</span>
+                                <div class="result-metrics">
+                                    <span><small>Pass</small><strong id="resultPass">Yes</strong></span>
+                                    <span><small>Score</small><strong id="resultScore">0</strong></span>
+                                </div>
+                            </div>
                         </div>
                         <input id="frameSeek" type="range" min="0" max="0" value="0" aria-label="Trajectory frame" oninput="currentFrame = Number(this.value); updateFrameDisplay()">
 
@@ -264,6 +271,6 @@
     </footer>
 
     <script src="assets/data/cases.js?v=20260912-all-games"></script>
-    <script src="script-clean.js?v=20260912-all-games"></script>
+    <script src="script-clean.js?v=20260912-playback-result"></script>
 </body>
 </html>

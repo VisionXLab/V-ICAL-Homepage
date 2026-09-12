@@ -210,10 +210,14 @@ function closePlayer() {
 function togglePlay() {
     if (!currentTask) return;
 
-    isPlaying = !isPlaying;
-    const playBtn = document.getElementById('playBtn');
-
-    if (isPlaying) {
+    if (!isPlaying) {
+        const task = TASK_DATA[currentTask];
+        if (currentFrame === task.frames.length - 1) {
+            currentFrame = 0;
+            updateFrameDisplay();
+        }
+        isPlaying = true;
+        const playBtn = document.getElementById('playBtn');
         playBtn.textContent = '⏸ Pause';
         playBtn.classList.add('playing');
 
@@ -224,10 +228,17 @@ function togglePlay() {
             nextFrame();
         }, interval);
     } else {
-        playBtn.textContent = '▶ Play';
-        playBtn.classList.remove('playing');
-        clearInterval(playInterval);
+        stopPlayback();
     }
+}
+
+function stopPlayback() {
+    isPlaying = false;
+    clearInterval(playInterval);
+    playInterval = null;
+    const playBtn = document.getElementById('playBtn');
+    playBtn.textContent = '▶ Play';
+    playBtn.classList.remove('playing');
 }
 
 function nextFrame() {
@@ -238,11 +249,12 @@ function nextFrame() {
 
     if (currentFrame < maxFrames - 1) {
         currentFrame++;
-    } else {
-        currentFrame = 0; // Loop
     }
 
     updateFrameDisplay();
+    if (isPlaying && currentFrame === maxFrames - 1) {
+        stopPlayback();
+    }
 }
 
 function prevFrame() {
@@ -253,8 +265,6 @@ function prevFrame() {
 
     if (currentFrame > 0) {
         currentFrame--;
-    } else {
-        currentFrame = maxFrames - 1;
     }
 
     updateFrameDisplay();
@@ -277,6 +287,16 @@ function updateFrameDisplay() {
     // Update action
     const action = task.actions[currentFrame] || '-';
     document.getElementById('actionDisplay').textContent = action;
+
+    const isFinalFrame = currentFrame === task.frames.length - 1;
+    const resultOverlay = document.getElementById('resultOverlay');
+    const passed = task.ending === 'victory';
+    resultOverlay.hidden = !isFinalFrame;
+    resultOverlay.classList.toggle('is-pass', passed);
+    document.getElementById('resultPass').textContent = passed ? 'Yes' : 'No';
+    document.getElementById('resultScore').textContent = new Intl.NumberFormat('en-US', {
+        maximumFractionDigits: 2
+    }).format(task.reward);
 }
 
 function handleKeyboard(e) {

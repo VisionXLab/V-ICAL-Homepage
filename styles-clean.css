@@ -683,6 +683,41 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
     object-fit: contain;
 }
 
+.player-loading-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #003B7A;
+    background: #F4F8FB;
+}
+
+.player-loading-overlay[hidden] {
+    display: none;
+}
+
+.player-loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(2, 136, 209, 0.2);
+    border-top-color: #EF5B45;
+    border-radius: 50%;
+    animation: player-loading-spin 0.8s linear infinite;
+}
+
+.player-loading-overlay strong {
+    font-family: "Source Sans 3", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+}
+
+@keyframes player-loading-spin {
+    to { transform: rotate(360deg); }
+}
+
 .player-result-overlay {
     position: absolute;
     inset: 0;
@@ -777,6 +812,18 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 .player-controls-compact button:hover {
     background: #0288D1;
     color: #FFFFFF;
+}
+
+.player-controls-compact button:disabled,
+.player-controls-compact select:disabled,
+#frameSeek:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.player-controls-compact button:disabled:hover {
+    background: #FFFFFF;
+    color: #003B7A;
 }
 
 #playBtn.playing {

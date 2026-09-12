@@ -6,7 +6,7 @@
     <title>V-ICAL Bench - Video In-Context Learning Benchmark</title>
     <link rel="preload" href="assets/fonts/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="assets/fonts/source-sans-3.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="styles-clean.css?v=20260912-taxi-motion-6">
+    <link rel="stylesheet" href="styles-clean.css?v=20260912-frame-preload">
 </head>
 <body>
     <!-- Navigation -->
@@ -173,6 +173,10 @@
 
                         <div class="player-screen-compact">
                             <img id="playerFrame" src="assets/cases/taxi/frame_000.png" alt="Game frame">
+                            <div class="player-loading-overlay" id="playerLoading" role="status" aria-live="polite" hidden>
+                                <span class="player-loading-spinner" aria-hidden="true"></span>
+                                <strong id="playerLoadingText">加载中</strong>
+                            </div>
                             <div class="player-result-overlay" id="resultOverlay" hidden aria-live="polite">
                                 <span class="result-complete">Run complete</span>
                                 <div class="result-metrics">
@@ -185,8 +189,8 @@
 
                         <div class="player-controls-compact">
                             <button id="playBtn" onclick="togglePlay()">▶ Play</button>
-                            <button onclick="prevFrame()">⏮ Prev</button>
-                            <button onclick="nextFrame()">Next ⏭</button>
+                            <button id="prevBtn" onclick="prevFrame()">⏮ Prev</button>
+                            <button id="nextBtn" onclick="nextFrame()">Next ⏭</button>
 
                             <select id="speedSelect" aria-label="Playback speed">
                                 <option value="1">1×</option>
@@ -272,6 +276,6 @@
     </footer>
 
     <script src="assets/data/cases.js?v=20260912-all-games"></script>
-    <script src="script-clean.js?v=20260912-playback-result"></script>
+    <script src="script-clean.js?v=20260912-frame-preload"></script>
 </body>
 </html>

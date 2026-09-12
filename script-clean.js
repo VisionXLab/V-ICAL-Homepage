@@ -9,6 +9,9 @@ let currentTask = null;
 let currentFrame = 0;
 let isPlaying = false;
 let playInterval = null;
+let isLoadingFrames = false;
+let preloadRequest = 0;
+const framePreloadCache = new Map();
 
 // ============= Initialize =============
 document.addEventListener('DOMContentLoaded', () => {
@@ -129,14 +132,16 @@ function animateStats() {
 }
 
 // ============= Player Functions =============
-function openPlayer(taskId) {
+async function openPlayer(taskId) {
     const task = TASK_DATA[taskId];
     if (!task) return;
 
     closePlayer();
+    const requestId = ++preloadRequest;
 
     currentTask = taskId;
     currentFrame = 0;
+    setPlayerLoading(true, '加载中');
 
     // Update active card
     document.querySelectorAll('.task-card').forEach(card => {
@@ -164,15 +169,15 @@ function openPlayer(taskId) {
     // Update rules
     document.getElementById('rulesText').textContent = task.rules;
 
-    // Update player frame
-    document.getElementById('playerFrame').src = task.frames[0];
-    document.getElementById('playerFrame').alt = task.name + ' agent trajectory';
+    // Keep the loading cover over the previous image until every trajectory frame is ready.
+    const playerFrame = document.getElementById('playerFrame');
+    playerFrame.alt = task.name + ' agent trajectory';
     const seek = document.getElementById('frameSeek');
-    seek.max = task.steps;
+    seek.max = task.frames.length - 1;
     seek.value = 0;
-
-    // Reset state
-    updateFrameDisplay();
+    document.getElementById('frameDisplay').textContent = `1/${task.frames.length}`;
+    document.getElementById('actionDisplay').textContent = '-';
+    document.getElementById('resultOverlay').hidden = true;
 
     // Expand player
     const playerContainer = document.getElementById('playerContainer');
@@ -186,12 +191,69 @@ function openPlayer(taskId) {
 
     // Smooth scroll
     playerContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+        await preloadTaskFrames(taskId, task.frames);
+        if (requestId !== preloadRequest || currentTask !== taskId) return;
+
+        currentFrame = 0;
+        isLoadingFrames = false;
+        updateFrameDisplay();
+        setPlayerLoading(false);
+    } catch (error) {
+        if (requestId !== preloadRequest || currentTask !== taskId) return;
+        console.error(`[Player] Failed to preload ${task.name} frames`, error);
+        setPlayerLoading(true, '加载失败，请重新打开');
+    }
+}
+
+function preloadTaskFrames(taskId, frameUrls) {
+    if (framePreloadCache.has(taskId)) {
+        return framePreloadCache.get(taskId);
+    }
+
+    const preloadPromise = Promise.all(frameUrls.map(src => new Promise((resolve, reject) => {
+        const image = new Image();
+        image.decoding = 'async';
+        image.onload = async () => {
+            try {
+                await image.decode();
+            } catch (_) {
+                // A completed image is usable even when explicit decoding is unsupported.
+            }
+            resolve(image);
+        };
+        image.onerror = () => reject(new Error(`Unable to load frame: ${src}`));
+        image.src = src;
+    }))).catch(error => {
+        framePreloadCache.delete(taskId);
+        throw error;
+    });
+
+    framePreloadCache.set(taskId, preloadPromise);
+    return preloadPromise;
+}
+
+function setPlayerLoading(loading, message = '加载中') {
+    isLoadingFrames = loading;
+    const playerContainer = document.getElementById('playerContainer');
+    const loadingOverlay = document.getElementById('playerLoading');
+    loadingOverlay.hidden = !loading;
+    document.getElementById('playerLoadingText').textContent = message;
+    playerContainer.setAttribute('aria-busy', String(loading));
+
+    ['frameSeek', 'playBtn', 'prevBtn', 'nextBtn', 'speedSelect'].forEach(id => {
+        document.getElementById(id).disabled = loading;
+    });
 }
 
 function closePlayer() {
+    preloadRequest++;
     if (isPlaying) {
-        togglePlay();
+        stopPlayback();
     }
+
+    setPlayerLoading(false);
 
     const playerContainer = document.getElementById('playerContainer');
     playerContainer.classList.remove('active');
@@ -208,7 +270,7 @@ function closePlayer() {
 }
 
 function togglePlay() {
-    if (!currentTask) return;
+    if (!currentTask || isLoadingFrames) return;
 
     if (!isPlaying) {
         const task = TASK_DATA[currentTask];
@@ -242,7 +304,7 @@ function stopPlayback() {
 }
 
 function nextFrame() {
-    if (!currentTask) return;
+    if (!currentTask || isLoadingFrames) return;
 
     const task = TASK_DATA[currentTask];
     const maxFrames = task.frames.length;
@@ -258,7 +320,7 @@ function nextFrame() {
 }
 
 function prevFrame() {
-    if (!currentTask) return;
+    if (!currentTask || isLoadingFrames) return;
 
     const task = TASK_DATA[currentTask];
     const maxFrames = task.frames.length;
@@ -271,7 +333,7 @@ function prevFrame() {
 }
 
 function updateFrameDisplay() {
-    if (!currentTask) return;
+    if (!currentTask || isLoadingFrames) return;
 
     const task = TASK_DATA[currentTask];
 
@@ -302,6 +364,7 @@ function updateFrameDisplay() {
 function handleKeyboard(e) {
     if (!currentTask) return;
     if (e.target.closest('button, select, input, video, [role="button"]')) return;
+    if (isLoadingFrames && e.key !== 'Escape') return;
 
     switch(e.key) {
         case 'Escape':

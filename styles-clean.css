@@ -401,8 +401,8 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 .case-guide {
     --case-columns: 4;
     --case-gap: 20px;
-    height: 104px;
-    margin: 4px 0 10px;
+    height: 92px;
+    margin: 4px 0 8px;
 }
 
 .case-guide[hidden] {
@@ -418,77 +418,63 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
     font-size: 15px;
     font-weight: 700;
     text-align: center;
+    white-space: nowrap;
 }
 
 .case-guide-target span {
     display: inline-block;
-    position: relative;
-    transform: rotate(-1.5deg);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
-}
-
-.case-guide-target span::after {
-    content: "";
-    position: absolute;
-    left: 8%;
-    right: 4%;
-    bottom: -5px;
-    height: 5px;
-    border-bottom: 2px solid rgba(239, 91, 69, 0.72);
-    border-radius: 50%;
-    transform: rotate(1deg);
 }
 
 .case-guide-arrow {
     position: absolute;
     left: 50%;
-    bottom: -4px;
-    width: min(220px, 100%);
-    height: 82px;
+    bottom: -2px;
+    width: 140px;
+    height: 64px;
     overflow: visible;
     transform: translateX(-50%);
-    filter: drop-shadow(0 3px 2px rgba(0, 59, 122, 0.12));
+    filter: drop-shadow(0 3px 3px rgba(0, 59, 122, 0.14));
 }
 
-.case-guide-arrow-shadow,
-.case-guide-arrow-stroke,
+.case-guide-arrow-rail,
+.case-guide-arrow-flow,
 .case-guide-arrow-head {
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-.case-guide-arrow-shadow {
+.case-guide-arrow-rail {
     stroke: rgba(11, 79, 134, 0.2);
-    stroke-width: 8;
+    stroke-width: 5;
 }
 
-.case-guide-arrow-stroke {
+.case-guide-arrow-flow {
     stroke: #ef5b45;
-    stroke-width: 4;
-    stroke-dasharray: 310;
-    stroke-dashoffset: 310;
-    animation: guide-draw 3.2s cubic-bezier(0.55, 0.08, 0.25, 1) infinite;
+    stroke-width: 3.5;
+    stroke-dasharray: 92;
+    stroke-dashoffset: 92;
+    animation: guide-draw 2.5s cubic-bezier(0.55, 0.08, 0.25, 1) infinite;
 }
 
 .case-guide-arrow-head {
     stroke: #ef5b45;
-    stroke-width: 4.5;
-    opacity: 0;
-    transform-origin: 110px 70px;
-    animation: guide-head-pop 3.2s ease-out infinite;
+    stroke-width: 4;
+    opacity: 1;
+    transform-origin: 70px 49px;
+    animation: guide-head-pulse 1.6s ease-in-out infinite;
 }
 
 @keyframes guide-draw {
-    0%, 8% { stroke-dashoffset: 310; }
-    48%, 86% { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -310; }
+    0%, 10% { stroke-dashoffset: 92; }
+    55%, 88% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -92; }
 }
 
-@keyframes guide-head-pop {
-    0%, 40% { opacity: 0; transform: scale(0.55) rotate(-8deg); }
-    50%, 86% { opacity: 1; transform: scale(1) rotate(0); }
-    100% { opacity: 0; transform: scale(0.8) rotate(4deg); }
+@keyframes guide-head-pulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(3px) scale(1.06); }
 }
 
 .task-card {
@@ -881,10 +867,10 @@ footer {
     .case-search { flex-basis: 100%; }
     .case-toolbar label:not(.case-search) { flex: 1; }
     .hero-title { font-size: 38px; }
-    .case-guide { --case-columns: 1; height: 100px; }
+    .case-guide { --case-columns: 1; height: 92px; }
 }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
-    .case-guide-arrow-stroke { stroke-dashoffset: 0; }
+    .case-guide-arrow-flow { stroke-dashoffset: 0; }
     .case-guide-arrow-head { opacity: 1; transform: none; }
 }

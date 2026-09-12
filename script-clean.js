@@ -60,6 +60,8 @@ function renderCases() {
     const entries = Object.entries(TASK_DATA).filter(([, task]) =>
         (!category || task.category === category) &&
         `${task.name} ${task.gameId} ${task.model}`.toLowerCase().includes(query));
+    const showTaxiGuide = entries[0]?.[1].name === 'Taxi';
+    document.getElementById('taxiGuide').hidden = !showTaxiGuide;
     grid.replaceChildren();
     for (const [id, task] of entries) {
         const card = document.createElement('button');
@@ -69,6 +71,9 @@ function renderCases() {
         card.setAttribute('aria-label', `${task.name} case`);
         card.setAttribute('aria-expanded', 'false');
         card.setAttribute('aria-controls', 'playerContainer');
+        if (showTaxiGuide && task.name === 'Taxi') {
+            card.setAttribute('aria-describedby', 'taxiGuideText');
+        }
         const image = document.createElement('img');
         image.src = task.poster;
         image.alt = task.name;

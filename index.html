@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-ICAL Bench - Video In-Context Learning Benchmark</title>
+    <link rel="preload" href="assets/fonts/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/fonts/source-sans-3.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="styles-clean.css?v=20260912-logo">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-vibe">VIBE</span>
+                <span class="logo-gaming">Gaming</span>
+            </div>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#tasks">Tasks</a>
+                <a href="#results">Results</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="overview">
+        <div class="shine-overlay"></div>
+
+        <div class="hero-container">
+            <!-- Corner Placeholders -->
+            <div class="corner-placeholder top-left">
+                <img src="assets/cases/taxi/poster.png" alt="Taxi Demo">
+            </div>
+
+            <div class="corner-placeholder top-right">
+                <img src="assets/cases/seaquest/poster.png" alt="Seaquest Demo">
+            </div>
+
+            <!-- Main Content -->
+            <div class="hero-content">
+                <h1 class="hero-title hero-brand"><img class="hero-logo" src="assets/images/logo.png" alt="VIBE Gaming" fetchpriority="high"></h1>
+                <p class="hero-subtitle">Evaluating Video In-Context Learning</p>
+                <p class="hero-subtitle-small">for Multimodal Agents in Interactive Environments</p>
+
+                <div class="hero-buttons">
+                    <a href="assets/paper/v-ical-bench.pdf" class="btn btn-primary" target="_blank" rel="noopener">Paper</a>
+                    <a href="https://github.com/VisionXLab/V-ICAL" class="btn btn-secondary" target="_blank" rel="noopener">Code</a>
+                    <a href="assets/data/case-studies.zip" class="btn btn-secondary" download>Case Data</a>
+                </div>
+
+                <!-- Demo Flow -->
+                <div class="demo-flow">
+                    <div class="flow-section">
+                        <h3>Human demonstration</h3>
+                        <div class="flow-frames">
+                            <div class="frame-box"><img src="assets/cases/taxi/human_0.jpg" alt="Taxi human demonstration: initial state"></div>
+                            <div class="arrow">›</div>
+                            <div class="frame-box"><img src="assets/cases/taxi/human_1.jpg" alt="Taxi human demonstration: middle state"></div>
+                            <div class="arrow">›</div>
+                            <div class="frame-box"><img src="assets/cases/taxi/human_2.jpg" alt="Taxi human demonstration: final state"></div>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow-main">→</div>
+
+                    <div class="flow-section">
+                        <h3>Agent decisions</h3>
+                        <div class="flow-frames">
+                            <div class="frame-box"><img src="assets/cases/taxi/frame_000.png" alt="Taxi agent: initial state"></div>
+                            <div class="arrow">›</div>
+                            <div class="frame-box"><img src="assets/cases/taxi/frame_003.png" alt="Taxi agent: passenger picked up"></div>
+                            <div class="arrow">›</div>
+                            <div class="frame-box"><img src="assets/cases/taxi/frame_012.png" alt="Taxi agent: successful dropoff"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="hero-stats">
+                    <span class="stat" data-count="342">0 Tasks</span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat" data-count="37">0 Environments</span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat" data-count="18">0 Models</span>
+                </div>
+            </div>
+
+            <!-- Bottom Corners -->
+            <div class="corner-placeholder bottom-left">
+                <img src="assets/cases/tetris/poster.png" alt="Tetris Demo">
+            </div>
+
+            <div class="corner-placeholder bottom-right">
+                <img src="assets/cases/highway/poster.png" alt="Highway Demo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmark Overview -->
+    <section class="section benchmark-overview">
+        <div class="container">
+            <h2>Benchmark Overview</h2>
+            <div class="overview-image">
+                <img src="assets/images/vibe_overview_transparent.png" alt="Benchmark Overview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Task Explorer -->
+    <section class="section task-explorer" id="tasks">
+        <div class="container">
+            <h2>Explore Evaluation Tasks</h2>
+            <p class="section-intro">Human demonstrations and recorded agent trajectories across every benchmark environment.</p>
+
+            <div class="case-toolbar">
+                <label class="case-search">Search games
+                    <input id="caseSearch" type="search" placeholder="Game or model" autocomplete="off">
+                </label>
+                <label>Environment
+                    <select id="caseCategory"><option value="">All environments</option></select>
+                </label>
+                <span id="caseCount" role="status"></span>
+            </div>
+            <div class="task-grid" id="caseGrid"></div>
+            <p id="caseEmpty" hidden>No matching games.</p>
+
+            <!-- Inline Player (Compact, Fits on One Page) -->
+            <div id="playerContainer" class="player-container-compact" hidden>
+                <button class="player-close" onclick="closePlayer()" aria-label="Close case" title="Close case">×</button>
+                <h3 id="caseTitle"></h3>
+
+                <div class="player-layout-compact">
+                    <!-- Left: Input -->
+                    <div class="player-input-compact">
+                        <h3>Model Input</h3>
+
+                        <div class="compact-section">
+                            <div class="model-badge" id="modelBadge">
+                                <span id="modelName"></span>
+                            </div>
+                        </div>
+
+                        <div class="compact-section">
+                            <h4>Demo Video</h4>
+                            <div class="demo-video-small">
+                                <video id="demoVideo" controls playsinline preload="metadata" aria-label="Human demonstration video"></video>
+                            </div>
+                            <p id="demoCaption" class="demo-caption"></p>
+                        </div>
+
+                        <div class="compact-section">
+                            <h4>Rules</h4>
+                            <p class="rules-text-small" id="rulesText"></p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Output -->
+                    <div class="player-output-compact">
+                        <h3>Model Output</h3>
+
+                        <div class="player-screen-compact">
+                            <img id="playerFrame" src="assets/cases/taxi/frame_000.png" alt="Game frame">
+                        </div>
+                        <input id="frameSeek" type="range" min="0" max="0" value="0" aria-label="Trajectory frame" oninput="currentFrame = Number(this.value); updateFrameDisplay()">
+
+                        <div class="player-controls-compact">
+                            <button id="playBtn" onclick="togglePlay()">▶ Play</button>
+                            <button onclick="prevFrame()">⏮ Prev</button>
+                            <button onclick="nextFrame()">Next ⏭</button>
+
+                            <select id="speedSelect" aria-label="Playback speed">
+                                <option value="1">1×</option>
+                                <option value="3" selected>3×</option>
+                                <option value="5">5×</option>
+                            </select>
+                        </div>
+
+                        <div class="player-info-compact">
+                            <span>Frame: <strong id="frameDisplay">0/0</strong></span>
+                            <span>Action taken: <strong id="actionDisplay">-</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section" id="results">
+        <div class="container">
+            <h2>Benchmark Results</h2>
+            <div class="results-table-wrapper">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Overall</th>
+                            <th>Navigation</th>
+                            <th>Control</th>
+                            <th>Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Human</strong></td>
+                            <td><strong>94.2</strong></td>
+                            <td>96.8</td>
+                            <td>93.4</td>
+                            <td>92.5</td>
+                        </tr>
+                        <tr>
+                            <td>GPT-4o</td>
+                            <td>68.3</td>
+                            <td>72.1</td>
+                            <td>65.8</td>
+                            <td>67.0</td>
+                        </tr>
+                        <tr>
+                            <td>Claude Sonnet 3.5</td>
+                            <td>65.7</td>
+                            <td>70.3</td>
+                            <td>62.4</td>
+                            <td>64.5</td>
+                        </tr>
+                        <tr>
+                            <td>Gemini 1.5 Pro</td>
+                            <td>63.2</td>
+                            <td>68.9</td>
+                            <td>59.8</td>
+                            <td>61.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trajectory Analysis -->
+    <section class="section">
+        <div class="container">
+            <h2>Trajectory Analysis</h2>
+            <div class="trajectory-viz">
+                <img src="assets/images/trajectory_analysis.png" alt="Trajectory Analysis">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>V-ICAL Bench</p>
+        </div>
+    </footer>
+
+    <script src="assets/data/cases.js?v=20260912-all-games"></script>
+    <script src="script-clean.js?v=20260912-all-games"></script>
+</body>
+</html>

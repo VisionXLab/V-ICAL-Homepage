@@ -439,6 +439,7 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 
 .case-guide-arrow-rail,
 .case-guide-arrow-flow,
+.case-guide-arrow-head-rail,
 .case-guide-arrow-head {
     fill: none;
     stroke-linecap: round;
@@ -455,26 +456,46 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
     stroke-width: 3.5;
     stroke-dasharray: 92;
     stroke-dashoffset: 92;
-    animation: guide-draw 2.5s cubic-bezier(0.55, 0.08, 0.25, 1) infinite;
+    animation: guide-draw 2.8s cubic-bezier(0.55, 0.08, 0.25, 1) infinite;
+}
+
+.case-guide-arrow-head-rail {
+    stroke: rgba(11, 79, 134, 0.2);
+    stroke-width: 5;
+    transform: rotate(-30deg);
+    transform-origin: 70px 53px;
 }
 
 .case-guide-arrow-head {
     stroke: #ef5b45;
     stroke-width: 4;
-    opacity: 1;
+    opacity: 0;
     transform-origin: 70px 53px;
-    animation: guide-head-pulse 1.6s ease-in-out infinite;
+    animation: guide-head-light 2.8s ease-in-out infinite;
 }
 
 @keyframes guide-draw {
-    0%, 10% { stroke-dashoffset: 92; }
-    55%, 88% { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -92; }
+    0%, 8% { stroke-dashoffset: 92; }
+    48%, 72% { stroke-dashoffset: 0; }
+    96%, 100% { stroke-dashoffset: 92; }
 }
 
-@keyframes guide-head-pulse {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(3px) scale(1.06); }
+@keyframes guide-head-light {
+    0%, 48% {
+        opacity: 0;
+        transform: rotate(-30deg) scale(0.9);
+        filter: drop-shadow(0 0 0 rgba(239, 91, 69, 0));
+    }
+    54%, 72% {
+        opacity: 1;
+        transform: rotate(-30deg) scale(1.06);
+        filter: drop-shadow(0 0 4px rgba(239, 91, 69, 0.8));
+    }
+    78%, 100% {
+        opacity: 0;
+        transform: rotate(-30deg) scale(0.9);
+        filter: drop-shadow(0 0 0 rgba(239, 91, 69, 0));
+    }
 }
 
 .task-card {
@@ -942,5 +963,5 @@ footer {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
     .case-guide-arrow-flow { stroke-dashoffset: 0; }
-    .case-guide-arrow-head { opacity: 1; transform: none; }
+    .case-guide-arrow-head { opacity: 1; transform: rotate(-30deg); }
 }

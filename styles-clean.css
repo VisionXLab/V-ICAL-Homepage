@@ -477,7 +477,7 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 @keyframes guide-draw {
     0%, 8% { stroke-dashoffset: 92; }
     46%, 58% { stroke-dashoffset: 0; }
-    88%, 100% { stroke-dashoffset: 92; }
+    88%, 100% { stroke-dashoffset: -92; }
 }
 
 @keyframes guide-head-light {

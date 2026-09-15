@@ -860,6 +860,7 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 .results-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 1180px;
 }
 
 .results-table thead {
@@ -876,6 +877,15 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
     letter-spacing: 0.5px;
 }
 
+.results-table th small {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #526779;
+    letter-spacing: 0;
+}
+
 .results-table td {
     padding: 16px;
     border-top: 1px solid rgba(0, 59, 122, 0.1);
@@ -889,6 +899,15 @@ h1, h2, h3, .nav-logo, .task-name, .hero-stats {
 .results-table .highlight-row td {
     color: #003B7A;
     font-weight: 600;
+}
+
+.results-table .group-row th {
+    padding: 10px 16px;
+    background: rgba(0, 59, 122, 0.06);
+    color: #315166;
+    font-size: 12px;
+    font-style: italic;
+    text-transform: none;
 }
 
 /* Trajectory Viz */

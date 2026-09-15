@@ -6,7 +6,7 @@
     <title>V-ICAL Bench - Video In-Context Learning Benchmark</title>
     <link rel="preload" href="assets/fonts/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="assets/fonts/source-sans-3.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="styles-clean.css?v=20260912-frame-preload">
+    <link rel="stylesheet" href="styles-clean.css?v=20260915-latex-results-logo">
 </head>
 <body>
     <!-- Navigation -->
@@ -40,7 +40,7 @@
 
             <!-- Main Content -->
             <div class="hero-content">
-                <h1 class="hero-title hero-brand"><img class="hero-logo" src="assets/images/logo.png" alt="VIBE Gaming" fetchpriority="high"></h1>
+                <h1 class="hero-title hero-brand"><img class="hero-logo" src="assets/images/vical_logo.png" alt="V-ICAL" fetchpriority="high"></h1>
                 <p class="hero-subtitle">Evaluating Video In-Context Learning</p>
                 <p class="hero-subtitle-small">for Multimodal Agents in Interactive Environments</p>
 
@@ -218,41 +218,43 @@
                     <thead>
                         <tr>
                             <th>Model</th>
-                            <th>Overall</th>
-                            <th>Navigation</th>
-                            <th>Control</th>
-                            <th>Strategy</th>
+                            <th>Overall<br><small>S / P%</small></th>
+                            <th>Maze<br><small>S / P%</small></th>
+                            <th>Shooter<br><small>S / P%</small></th>
+                            <th>Control<br><small>S / P%</small></th>
+                            <th>Dodge<br><small>S / P%</small></th>
+                            <th>Collect<br><small>S / P%</small></th>
+                            <th>Sport<br><small>S / P%</small></th>
+                            <th>Single<br><small>S / P%</small></th>
+                            <th>Multiple<br><small>S / P%</small></th>
+                            <th>Static<br><small>S / P%</small></th>
+                            <th>Dynamic<br><small>S / P%</small></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>Human</strong></td>
-                            <td><strong>94.2</strong></td>
-                            <td>96.8</td>
-                            <td>93.4</td>
-                            <td>92.5</td>
-                        </tr>
-                        <tr>
-                            <td>GPT-4o</td>
-                            <td>68.3</td>
-                            <td>72.1</td>
-                            <td>65.8</td>
-                            <td>67.0</td>
-                        </tr>
-                        <tr>
-                            <td>Claude Sonnet 3.5</td>
-                            <td>65.7</td>
-                            <td>70.3</td>
-                            <td>62.4</td>
-                            <td>64.5</td>
-                        </tr>
-                        <tr>
-                            <td>Gemini 1.5 Pro</td>
-                            <td>63.2</td>
-                            <td>68.9</td>
-                            <td>59.8</td>
-                            <td>61.0</td>
-                        </tr>
+                        <tr class="group-row"><th colspan="12">Closed-source Models</th></tr>
+                        <tr class="highlight-row"><td><strong>Seed-2.1-Pro</strong></td><td><strong>54.4 / 58</strong></td><td>64.4 / 70</td><td>43.3 / 49</td><td>88.4 / 73</td><td>47.1 / 51</td><td>52.3 / 60</td><td>54.3 / 80</td><td>68.9 / 70</td><td>52.7 / 57</td><td>74.3 / 70</td><td>47.0 / 54</td></tr>
+                        <tr><td>Gemini-3.6-Flash</td><td><strong>49.5 / 53</strong></td><td>61.0 / 70</td><td>37.9 / 39</td><td>88.1 / 80</td><td>39.9 / 44</td><td>42.2 / 63</td><td>29.7 / 50</td><td>67.1 / 70</td><td>47.3 / 52</td><td>77.2 / 75</td><td>39.2 / 45</td></tr>
+                        <tr><td>Gemini-3.1-Pro</td><td><strong>48.0 / 53</strong></td><td>49.1 / 54</td><td>44.9 / 46</td><td>65.5 / 53</td><td>42.0 / 48</td><td>40.3 / 45</td><td>34.3 / 70</td><td>61.5 / 70</td><td>46.4 / 51</td><td>67.7 / 69</td><td>40.8 / 47</td></tr>
+                        <tr><td>GPT-5.6-sol</td><td><strong>46.7 / 51</strong></td><td>52.0 / 53</td><td>37.6 / 43</td><td>82.7 / 87</td><td>38.1 / 43</td><td>41.5 / 43</td><td>35.0 / 60</td><td>82.5 / 85</td><td>42.4 / 47</td><td>68.3 / 67</td><td>38.8 / 46</td></tr>
+                        <tr><td>Gemini-3-Flash</td><td><strong>39.6 / 42</strong></td><td>36.9 / 37</td><td>37.6 / 39</td><td>64.5 / 67</td><td>34.7 / 36</td><td>31.1 / 40</td><td>34.3 / 60</td><td>52.2 / 50</td><td>38.1 / 41</td><td>54.7 / 53</td><td>34.0 / 38</td></tr>
+                        <tr><td>Seed-2.0-Lite</td><td><strong>37.0 / 41</strong></td><td>39.0 / 51</td><td>26.5 / 24</td><td>86.3 / 80</td><td>31.4 / 36</td><td>36.2 / 48</td><td>32.0 / 60</td><td>54.2 / 60</td><td>34.9 / 39</td><td>50.6 / 49</td><td>31.9 / 38</td></tr>
+                        <tr class="group-row"><th colspan="12">Open-weight Models</th></tr>
+                        <tr><td>Kimi-K3</td><td><strong>32.5 / 39</strong></td><td>32.3 / 40</td><td>26.4 / 34</td><td>70.1 / 73</td><td>27.2 / 34</td><td>25.4 / 30</td><td>26.3 / 40</td><td>51.8 / 55</td><td>30.2 / 37</td><td>46.7 / 46</td><td>27.3 / 36</td></tr>
+                        <tr><td>Qwen3.5-397B-A17B</td><td><strong>32.5 / 31</strong></td><td>28.2 / 33</td><td>30.3 / 27</td><td>73.6 / 67</td><td>28.1 / 27</td><td>25.4 / 30</td><td>25.7 / 40</td><td>44.2 / 45</td><td>31.1 / 30</td><td>45.0 / 42</td><td>27.9 / 27</td></tr>
+                        <tr><td>DeepSeek-V4F-V</td><td><strong>25.2 / 30</strong></td><td>21.0 / 29</td><td>26.0 / 34</td><td>47.1 / 53</td><td>24.1 / 30</td><td>19.3 / 30</td><td>21.7 / 30</td><td>26.6 / 15</td><td>25.0 / 32</td><td>30.1 / 26</td><td>23.4 / 32</td></tr>
+                        <tr><td>gemma-4-31B-it</td><td><strong>21.9 / 25</strong></td><td>20.4 / 28</td><td>17.7 / 29</td><td>32.8 / 27</td><td>19.7 / 25</td><td>14.4 / 18</td><td>13.7 / 10</td><td>40.1 / 35</td><td>19.7 / 24</td><td>29.8 / 25</td><td>18.9 / 25</td></tr>
+                        <tr><td>MiMo-v2.5</td><td><strong>20.4 / 23</strong></td><td>20.0 / 21</td><td>18.3 / 26</td><td>34.6 / 27</td><td>21.4 / 27</td><td>13.1 / 28</td><td>16.0 / 20</td><td>25.6 / 15</td><td>19.8 / 24</td><td>22.2 / 14</td><td>19.8 / 26</td></tr>
+                        <tr><td>Qwen2.5-72B</td><td><strong>17.7 / 23</strong></td><td>14.3 / 16</td><td>16.3 / 35</td><td>20.1 / 7</td><td>20.4 / 31</td><td>11.5 / 25</td><td>10.3 / 0</td><td>19.0 / 10</td><td>17.5 / 25</td><td>16.9 / 8</td><td>17.9 / 29</td></tr>
+                        <tr><td>MiMo-VL-7B</td><td><strong>17.4 / 14</strong></td><td>13.9 / 15</td><td>15.8 / 10</td><td>19.7 / 13</td><td>19.9 / 16</td><td>13.3 / 10</td><td>12.7 / 10</td><td>20.6 / 20</td><td>17.0 / 13</td><td>17.1 / 14</td><td>17.5 / 14</td></tr>
+                        <tr><td>Qwen3.6-27B</td><td><strong>16.9 / 27</strong></td><td>10.5 / 18</td><td>13.8 / 36</td><td>17.5 / 7</td><td>19.2 / 33</td><td>12.2 / 28</td><td>22.7 / 40</td><td>17.3 / 10</td><td>16.8 / 29</td><td>14.8 / 8</td><td>17.6 / 34</td></tr>
+                        <tr><td>GLM-4.5V</td><td><strong>16.6 / 21</strong></td><td>10.9 / 15</td><td>13.1 / 27</td><td>28.7 / 27</td><td>18.1 / 26</td><td>11.9 / 15</td><td>12.0 / 10</td><td>17.2 / 5</td><td>16.5 / 23</td><td>16.6 / 10</td><td>16.6 / 25</td></tr>
+                        <tr><td>Qwen3.5-VL-27B</td><td><strong>16.4 / 24</strong></td><td>13.3 / 15</td><td>12.4 / 35</td><td>22.4 / 13</td><td>17.8 / 32</td><td>12.2 / 20</td><td>20.0 / 40</td><td>18.5 / 0</td><td>16.2 / 27</td><td>14.2 / 4</td><td>17.3 / 32</td></tr>
+                        <tr><td>Qwen3-Omni-30B</td><td><strong>13.6 / 20</strong></td><td>9.7 / 13</td><td>5.8 / 20</td><td>19.5 / 13</td><td>15.6 / 27</td><td>5.3 / 18</td><td>16.7 / 30</td><td>19.6 / 10</td><td>12.8 / 22</td><td>16.9 / 10</td><td>12.3 / 24</td></tr>
+                        <tr><td>Qwen3-VL-235B</td><td><strong>12.3 / 5</strong></td><td>12.5 / 6</td><td>6.9 / 3</td><td>19.7 / 13</td><td>11.7 / 5</td><td>11.6 / 5</td><td>15.3 / 10</td><td>21.6 / 5</td><td>11.2 / 5</td><td>14.2 / 6</td><td>11.6 / 5</td></tr>
+                        <tr class="group-row"><th colspan="12">Reference Baselines</th></tr>
+                        <tr><td>Random</td><td><strong>14.0 / 14</strong></td><td>7.9 / 10</td><td>19.1 / 23</td><td>16.8 / 13</td><td>15.5 / 15</td><td>15.0 / 15</td><td>19.4 / 30</td><td>5.6 / 2</td><td>15.0 / 15</td><td>8.4 / 5</td><td>16.1 / 17</td></tr>
+                        <tr class="highlight-row"><td><strong>Human-score</strong></td><td><strong>83.6 / 91</strong></td><td>92.1 / 96</td><td>76.4 / 85</td><td>94.6 / 89</td><td>82.8 / 90</td><td>91.3 / 99</td><td>69.8 / 97</td><td>99.0 / 100</td><td>81.8 / 90</td><td>98.1 / 99</td><td>78.3 / 88</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -276,6 +278,6 @@
     </footer>
 
     <script src="assets/data/cases.js?v=20260912-all-games"></script>
-    <script src="script-clean.js?v=20260912-frame-preload"></script>
+    <script src="script-clean.js?v=20260915-latex-results-logo"></script>
 </body>
 </html>

@@ -352,13 +352,13 @@ function updateFrameDisplay() {
 
     const isFinalFrame = currentFrame === task.frames.length - 1;
     const resultOverlay = document.getElementById('resultOverlay');
-    const passed = task.ending === 'victory';
+    const passed = task.pass;
     resultOverlay.hidden = !isFinalFrame;
     resultOverlay.classList.toggle('is-pass', passed);
     document.getElementById('resultPass').textContent = passed ? 'Yes' : 'No';
     document.getElementById('resultScore').textContent = new Intl.NumberFormat('en-US', {
         maximumFractionDigits: 2
-    }).format(task.reward);
+    }).format(task.score);
 }
 
 function handleKeyboard(e) {

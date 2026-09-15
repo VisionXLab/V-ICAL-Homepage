@@ -82,7 +82,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Taxi-v3_example (9 frames)",
       "[Human] Taxi-v3_example_failure (11 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "cliffwalking": {
     "name": "CliffWalking",
@@ -170,7 +172,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/CliffWalking-v1/0",
     "demoLabels": [
       "video_nl.mp4 (10f @2fps)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.00000000000001
   },
   "cartpole": {
     "name": "CartPole",
@@ -326,7 +330,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/CartPole-v1/state4",
     "demoLabels": [
       "[Human] CartPole-v1_example (32 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "acrobot": {
     "name": "Acrobot",
@@ -578,7 +584,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/Acrobot-v1/s2",
     "demoLabels": [
       "[Human] Acrobot-v1_20260423_182954victory (56 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.00000069849193
   },
   "enduro": {
     "name": "Enduro",
@@ -815,7 +823,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Enduro-v5_20260331_151323_fog (55 frames)",
       "[Human] Enduro-v5_crash (8 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 80.0
   },
   "freeway": {
     "name": "Freeway",
@@ -1079,7 +1089,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Freeway-v5/12",
     "demoLabels": [
       "[Human] Freeway-v5_20260421_170244victory (43 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.00000000000001
   },
   "seaquest": {
     "name": "Seaquest",
@@ -1318,7 +1330,9 @@ const TASK_DATA = {
       "[Human] Seaquest-v5_get_shot (9 frames)",
       "[Human] Seaquest-v5_no_save (11 frames)",
       "[Human] Seaquest-v5_shoot+save (16 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 56.00000000000001
   },
   "pong": {
     "name": "Pong",
@@ -1554,7 +1568,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Pong-v5/state3",
     "demoLabels": [
       "[Human] Pong-v5_example (49 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 66.66666666666667
   },
   "breakout": {
     "name": "Breakout",
@@ -1682,7 +1698,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/CustomBreakout/s0",
     "demoLabels": [
       "[Human] CustomBreakout_20260508_210920victory (27 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "mountaincar": {
     "name": "MountainCar",
@@ -1866,7 +1884,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/MountainCar-v0/ss3",
     "demoLabels": [
       "[Human] MountainCar-v0_20260423_221143victory (21 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.00000000000001
   },
   "lavacrossing": {
     "name": "LavaCrossing",
@@ -1979,7 +1999,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] CustomLavaCrossing-v0_die (5 frames)",
       "[Human] CustomLavaCrossing-v0_optimal_20260402_110444 (17 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "unlockpickup": {
     "name": "UnlockPickup",
@@ -2093,7 +2115,9 @@ const TASK_DATA = {
       "[Human] CustomUnlockPickup-v0-v0_win (25 frames)",
       "[Human] CustomUnlockPickup-v0_lose (25 frames)",
       "[Human] CustomUnlockPickup-v0_lose_carrying (20 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "multiroom": {
     "name": "MultiRoom",
@@ -2297,7 +2321,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/CustomMultiRoom-v0/20-seed4707",
     "demoLabels": [
       "[Human] MiniGrid-MultiRoom-N6-v0_win (45 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 96.42857142857143
   },
   "frostbite": {
     "name": "Frostbite",
@@ -2442,7 +2468,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Frostbite-v5_crash_bird (22 frames)",
       "[Human] Frostbite-v5_into_water (25 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 70.0
   },
   "assault": {
     "name": "Assault",
@@ -2550,7 +2578,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Assault-v5/s4",
     "demoLabels": [
       "[Human] Assault-v5_20260423_185613victory (25 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 99.99999999999999
   },
   "asterix": {
     "name": "Asterix",
@@ -2786,7 +2816,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Asterix-v5/150",
     "demoLabels": [
       "[Human] Asterix-v5_crash (19 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 50.0
   },
   "demonattack": {
     "name": "DemonAttack",
@@ -3023,7 +3055,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] DemonAttack-v5_example (50 frames)",
       "[Human] DemonAttack-v5_example_failure (10 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "mspacman": {
     "name": "MsPacman",
@@ -3228,7 +3262,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] MsPacman-v5_example (38 frames)",
       "[Human] MsPacman-v5_example_failure (8 frames)"
-    ]
+    ],
+    "pass": false,
+    "score": 21.25
   },
   "alien": {
     "name": "Alien",
@@ -3528,7 +3564,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Alien-v5/s3",
     "demoLabels": [
       "[Human] Alien-v5_20260506_164108victory (40 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 26.66666666666666
   },
   "roadrunner": {
     "name": "RoadRunner",
@@ -3664,7 +3702,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_RoadRunner-v5/ss1",
     "demoLabels": [
       "[Human] RoadRunner-v5_20260506_180102victory (29 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "highway": {
     "name": "Highway",
@@ -3816,7 +3856,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/highway-v0/s9",
     "demoLabels": [
       "[Human] highway-v0_20260509_115955victory8 (29 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.00000000000004
   },
   "battlezone": {
     "name": "BattleZone",
@@ -4053,7 +4095,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] BattleZone-v5_example (26 frames)",
       "[Human] BattleZone-v5_example_failure (10 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "riverraid": {
     "name": "Riverraid",
@@ -4290,7 +4334,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Riverraid-v5_example2 (64 frames)",
       "[Human] Riverraid-v5_example_failure (6 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 80.0
   },
   "turmoil": {
     "name": "Turmoil",
@@ -4527,7 +4573,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Turmoil-v5_example (53 frames)",
       "[Human] Turmoil-v5_example_failure (27 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "trondead": {
     "name": "Trondead",
@@ -4764,7 +4812,9 @@ const TASK_DATA = {
     "demoLabels": [
       "[Human] Trondead-v5_example (32 frames)",
       "[Human] Trondead-v5_example_failure (5 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "flappybird": {
     "name": "FlappyBird",
@@ -4924,7 +4974,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/aFlappyBird-v1/1",
     "demoLabels": [
       "[Human] aFlappyBird-v1_20260417_134307victory (72 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 33.333333333333336
   },
   "tetris": {
     "name": "Tetris",
@@ -5088,7 +5140,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/tetris_gymnasium_Tetris/s0",
     "demoLabels": [
       "[Human] tetris_gymnasium_Tetris_20260423_190910victory (37 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "bigfish": {
     "name": "Bigfish",
@@ -5160,7 +5214,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-bigfish-v0/s4",
     "demoLabels": [
       "[Human] procgen_procgen-bigfish-v0_20260514_132645victory (18 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "bossfight": {
     "name": "Bossfight",
@@ -5292,7 +5348,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-bossfight-v0/s4",
     "demoLabels": [
       "[Human] procgen_procgen-bossfight-v0_20260514_140521victory (39 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "caveflyer": {
     "name": "Caveflyer",
@@ -5432,7 +5490,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-caveflyer-v0/s1",
     "demoLabels": [
       "[Human] procgen_procgen-caveflyer-v0_20260514_143508victory (32 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 60.17298095692922
   },
   "dodgeball": {
     "name": "Dodgeball",
@@ -5600,7 +5660,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-dodgeball-v0/s1",
     "demoLabels": [
       "[Human] procgen_procgen-dodgeball-v0_20260430_234008victory (45 frames)"
-    ]
+    ],
+    "pass": false,
+    "score": 20.0
   },
   "heist": {
     "name": "Heist",
@@ -5704,7 +5766,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-heist-v0/ss3",
     "demoLabels": [
       "[Human] procgen_procgen-heist-v0_20260507_113607victory (37 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "leaper": {
     "name": "Leaper",
@@ -5816,7 +5880,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-leaper-v0/s3",
     "demoLabels": [
       "[Human] procgen_procgen-leaper-v0_20260430_190811victory (31 frames)"
-    ]
+    ],
+    "pass": false,
+    "score": 61.66667342185974
   },
   "ninja": {
     "name": "Ninja",
@@ -5960,7 +6026,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/procgen__procgen-ninja-v0/1",
     "demoLabels": [
       "[Human] procgen_procgen-ninja-v0_20260416_222219victory (40 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 100.0
   },
   "tennis": {
     "name": "Tennis",
@@ -6060,7 +6128,9 @@ const TASK_DATA = {
     "demoSource": "ai_configs/ALE_Tennis-v5/1",
     "demoLabels": [
       "[Human] Tennis-lose (24 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 53.333333333333336
   },
   "choppercommand": {
     "name": "ChopperCommand",
@@ -6298,7 +6368,9 @@ const TASK_DATA = {
       "[Human] ChopperCommand-crash-car (14 frames)",
       "[Human] ChopperCommand-crash-plane (9 frames)",
       "[Human] ChopperCommand-shot (43 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 30.0
   },
   "berzerk": {
     "name": "Berzerk",
@@ -6532,6 +6604,8 @@ const TASK_DATA = {
       "[Human] Berzerk-crash-wall (13 frames)",
       "[Human] Berzerk-shot (46 frames)",
       "[Human] Berzerk-v5_crash-robot (8 frames)"
-    ]
+    ],
+    "pass": true,
+    "score": 50.0
   }
 };
